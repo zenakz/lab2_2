@@ -1,11 +1,11 @@
 package edu.iis.mto.similarity;
 
-import edu.iis.mto.search.SequenceSearch;
+import edu.iis.mto.search.SequenceSearcher;
 
 public class SimilarityFinder {
-	private SequenceSearch searcher;
+	private SequenceSearcher searcher;
 
-	public SimilarityFinder(SequenceSearch searcher) {
+	public SimilarityFinder(SequenceSearcher searcher) {
 		this.searcher = searcher;
 	}
 
