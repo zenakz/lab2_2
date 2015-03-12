@@ -13,9 +13,7 @@ public class SimilarityFinder {
 		if (seq1.length == 0 && seq2.length == 0) {
 			return 1.0d;
 		}
-		if (seq1.length == 0 || seq2.length == 0) {
-			return 0.0d;
-		}
+
 		int intersectSize = calculateIntersect(seq1, seq2);
 		int unionSize = seq1.length + seq2.length - intersectSize;
 
