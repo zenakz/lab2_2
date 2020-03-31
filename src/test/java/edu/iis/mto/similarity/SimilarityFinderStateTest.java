@@ -82,4 +82,20 @@ class SimilarityFinderStateTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1,seq1);
         assertEquals(SAME_SET, result);
     }
+
+    @Test void calculateHalfMatchingSets(){
+        seq1 = new int[]{3,8};
+        seq2 = new int[]{3};
+        similarityFinder = new SimilarityFinder((e, seq) ->{
+            for(int num:seq){
+                if (num == e) {
+                    return SearchResult.builder().withFound(true).build();
+                }
+            }
+            return SearchResult.builder().withFound(false).build();
+        });
+
+        double result = similarityFinder.calculateJackardSimilarity(seq1,seq2);
+        assertEquals(SAME_HALF, result);
+    }
 }
