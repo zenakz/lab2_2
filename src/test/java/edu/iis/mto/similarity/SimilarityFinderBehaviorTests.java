@@ -37,4 +37,11 @@ class SimilarityFinderBehaviorTests {
         assertEquals(0, sequenceSearcherMock.methodCallCounter);
     }
 
+    @Test public void behaviorTestWhenInterfaceIsNull() {
+        seq1 = new int[] {1, 2, 3};
+        seq2 = new int[] {1, 2, 3};
+        similarityFinder = new SimilarityFinder(null);
+        assertThrows(NullPointerException.class, () -> similarityFinder.calculateJackardSimilarity(seq1, seq2));
+    }
+
 }
