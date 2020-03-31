@@ -12,8 +12,8 @@ class SimilarityFinderStateTest {
     private final static double SAME_SET = 1.0;
     private final static double DIFFERENT_SET = 0.0;
     private final static double SAME_HALF = 0.5;
-    private int[] seq1;
-    private int[] seq2;
+    private int[] seq1=null;
+    private int[] seq2=null;
 
     @BeforeEach
     private void prep() {
@@ -98,4 +98,24 @@ class SimilarityFinderStateTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1,seq2);
         assertEquals(SAME_HALF, result);
     }
+
+
+    @Test
+    public void calculateNullSets() {
+        similarityFinder = new SimilarityFinder((elem, seq) ->
+                SearchResult.builder().withFound(false).build());
+
+        assertThrows(NullPointerException.class, ()->similarityFinder.calculateJackardSimilarity(seq1,seq2));
+    }
+
+    @Test
+    public void calculateEmptySets() {
+        seq1 = new int[]{};
+        seq2 = new int[]{};
+        similarityFinder = new SimilarityFinder((elem, seq) ->
+                SearchResult.builder().withFound(false).build());
+        double result = similarityFinder.calculateJackardSimilarity(seq1,seq2);
+        assertEquals(SAME_SET, result);
+    }
+
 }
