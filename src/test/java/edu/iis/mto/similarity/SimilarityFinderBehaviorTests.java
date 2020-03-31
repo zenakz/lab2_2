@@ -25,5 +25,14 @@ class SimilarityFinderBehaviorTests {
         assertEquals(1, sequenceSearcherMock.methodCallCounter);
     }
 
+    @Test
+    public void isSearchNotCalledForEmptySequence(){
+        seq1=new int[]{};
+        seq2=new int[]{5};
+        similarityFinder.calculateJackardSimilarity(seq1, seq2);
+        assertEquals(0, sequenceSearcherMock.methodCallCounter);
+    }
+
+
 
 }
